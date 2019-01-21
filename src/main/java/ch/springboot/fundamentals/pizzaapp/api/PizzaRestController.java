@@ -5,7 +5,7 @@ import ch.springboot.fundamentals.pizzaapp.infrastructure.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
+import java.util.List;
 
 @RestController
 @RequestMapping("/pizzas")
@@ -19,18 +19,18 @@ public class PizzaRestController {
     }
 
     @GetMapping
-    public Set<CatalogEntryDto> getAll() {
+    public List<CatalogEntryDto> getAll() {
         return catalogService.getPizzaInventory();
     }
 
     @PostMapping
-    public String order(@RequestBody PizzaDto pizza) {
+    public OrderResponseDto order(@RequestBody PizzaDto pizza) {
         boolean isPizzaAvailable = catalogService.isPizzaAvailable(pizza.getName());
         if (isPizzaAvailable) {
             System.out.println(pizza.getName());
-            return "SUCCESS";
+            return new OrderResponseDto("SUCCESS");
         } else {
-            return "NOOOO";
+            return new OrderResponseDto("FAIL");
         }
     }
 }

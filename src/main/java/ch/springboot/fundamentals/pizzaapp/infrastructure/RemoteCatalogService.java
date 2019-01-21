@@ -4,7 +4,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Profile("all")
@@ -19,9 +20,9 @@ public class RemoteCatalogService implements CatalogService {
     }
 
     @Override
-    public Set<CatalogEntryDto> getPizzaInventory() {
+    public List<CatalogEntryDto> getPizzaInventory() {
         RestTemplate restTemplate = new RestTemplate();
-        Set<CatalogEntryDto> catalog = restTemplate.getForObject("http://localhost:8090/api/catalog/", Set.class);
+        List<CatalogEntryDto> catalog = restTemplate.getForObject("http://localhost:8090/api/catalog/", ArrayList.class);
         System.out.println("real");
         return catalog;
     }

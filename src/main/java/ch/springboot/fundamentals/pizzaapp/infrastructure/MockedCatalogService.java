@@ -25,7 +25,7 @@ public class MockedCatalogService implements CatalogService {
     }
 
     @Override
-    public Set<CatalogEntryDto> getPizzaInventory() {
-        return new HashSet(CATALOG);
+    public List<CatalogEntryDto> getPizzaInventory() {
+        return CATALOG;
     }
 }

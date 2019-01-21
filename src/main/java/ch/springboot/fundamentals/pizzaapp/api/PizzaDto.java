@@ -4,6 +4,9 @@ public class PizzaDto {
 
     private String name;
 
+    public PizzaDto() {
+    }
+
     public PizzaDto(String name) {
         this.name = name;
     }

@@ -1,11 +1,11 @@
 package ch.springboot.fundamentals.pizzaapp.infrastructure;
 
-import java.util.Set;
+import java.util.List;
 
 public interface CatalogService {
 
 
     boolean isPizzaAvailable(String name);
 
-    Set<CatalogEntryDto> getPizzaInventory();
+    List<CatalogEntryDto> getPizzaInventory();
 }
